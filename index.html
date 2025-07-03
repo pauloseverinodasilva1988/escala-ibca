@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Escalas | Igreja Batista Caucaia do Alto</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="app-header">
+        <div class="header-content">
+            <img src="assets/images/logo_ibca2.png" alt="Logo Igreja Batista Caucaia do Alto" class="logo">
+            <h1 class="app-title">Gerenciador de Escalas</h1>
+            <p class="app-description">Bem-vindo ao sistema de gerenciamento de escalas dos ministérios da Igreja Batista Caucaia do Alto.</p>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#dashboard" class="nav-link active" data-section="dashboard">Dashboard</a></li>
+                <li><a href="#gerar-escalas" class="nav-link" data-section="gerar-escalas">Gerar Escalas</a></li>
+                <li><a href="#historico" class="nav-link" data-section="historico">Ver Histórico</a></li>
+                <li><a href="#configuracao" class="nav-link" data-section="configuracao">Configurações</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="app-main">
+        <section id="dashboard" class="app-section active-section">
+            <h2 class="section-title">Próximos Eventos</h2>
+            <div class="calendar-container dashboard-calendar-container">
+                <div class="calendar-header">
+                    <button id="prevMonth" class="btn btn-secondary btn-sm">&lt;</button>
+                    <h3 id="currentMonthYear"></h3>
+                    <button id="nextMonth" class="btn btn-secondary btn-sm">&gt;</button>
+                </div>
+                <div class="calendar-weekdays">
+                    <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+                </div>
+                <div class="calendar-grid" id="dashboard-calendar-grid">
+                    </div>
+            </div>
+            <div id="eventos-container" class="cards-grid" style="margin-top: var(--spacing-lg);">
+                <p id="no-events-message" class="info-message">Clique em uma data no calendário para ver os eventos, ou cadastre novos eventos.</p>
+                </div>
+        </section>
+
+        <section id="gerar-escalas" class="app-section">
+            <h2 class="section-title">Gerar Nova Escala</h2>
+            <div id="generate-scale-initial-info">
+                <p class="info-message">Para gerar escalas, você precisa ter Ministérios e Membros cadastrados.</p>
+                <button class="btn btn-primary" onclick="switchMainSection('configuracao'); switchSubSection('config-ministries');">Cadastrar Ministérios</button>
+                <button class="btn btn-primary" onclick="switchMainSection('configuracao'); switchSubSection('config-members');">Cadastrar Membros</button>
+            </div>
+            <form id="generate-scale-form" class="app-form" style="display: none;">
+                <label for="scale-month">Mês:</label>
+                <select id="scale-month" name="scale-month" required>
+                    </select>
+
+                <label for="scale-year">Ano:</label>
+                <input type="number" id="scale-year" name="scale-year" min="2024" value="2025" required>
+
+                <button type="submit" class="btn btn-primary">Gerar Escala</button>
+            </form>
+            <div id="generated-scale-output" class="scale-output">
+                </div>
+            <div id="share-options" class="share-options" style="display: none;">
+                <h3>Compartilhar Escala</h3>
+                <button class="btn btn-success" id="share-email">Enviar por Email</button>
+                <button class="btn btn-success" id="share-whatsapp">Enviar por WhatsApp</button>
+            </div>
+        </section>
+
+        <section id="historico" class="app-section">
+            <h2 class="section-title">Histórico de Escalas</h2>
+            <div id="history-list" class="history-list">
+                <p id="no-history-message" class="info-message">Nenhuma escala gerada no histórico.</p>
+                </div>
+            <div id="historical-scale-view" class="scale-output" style="display: none;">
+                </div>
+        </section>
+
+        <section id="configuracao" class="app-section">
+            <h2 class="section-title">Configurações do Sistema</h2>
+
+            <nav class="sub-nav">
+                <ul>
+                    <li><a href="#config-ministries" class="sub-nav-link active" data-sub-section="config-ministries">Gerenciar Ministérios</a></li>
+                    <li><a href="#config-members" class="sub-nav-link" data-sub-section="config-members">Gerenciar Membros</a></li>
+                    <li><a href="#config-events" class="sub-nav-link" data-sub-section="config-events">Gerenciar Eventos</a></li>
+                </ul>
+            </nav>
+
+            <div id="config-ministries" class="sub-section active-sub-section">
+                <h3 class="section-subtitle">Adicionar/Editar Ministério</h3>
+                <form id="ministry-form" class="app-form">
+                    <input type="hidden" id="ministry-id">
+                    <label for="ministry-name">Nome do Ministério:</label>
+                    <input type="text" id="ministry-name" required placeholder="Ex: Louvor, Acolhimento">
+                    <button type="submit" class="btn btn-primary">Salvar Ministério</button>
+                    <button type="button" class="btn btn-secondary" id="cancel-ministry-edit" style="display:none;">Cancelar Edição</button>
+                </form>
+
+                <h3 class="section-subtitle">Ministérios Cadastrados</h3>
+                <div id="ministries-list" class="registered-list">
+                    <p id="no-ministries-message" class="info-message">Nenhum ministério cadastrado ainda.</p>
+                    </div>
+            </div>
+
+            <div id="config-members" class="sub-section">
+                <h3 class="section-subtitle">Adicionar/Editar Membro</h3>
+                <form id="member-form" class="app-form">
+                    <input type="hidden" id="member-id">
+                    <label for="member-name">Nome do Membro:</label>
+                    <input type="text" id="member-name" required placeholder="Nome Completo">
+
+                    <label>Ministérios e Funções:</label>
+                    <div id="member-ministries-roles" class="checkbox-group">
+                        <p id="no-ministries-for-members-message" class="info-message">Por favor, cadastre os ministérios primeiro na seção "Gerenciar Ministérios".</p>
+                    </div>
+                    
+                    <div class="form-group" style="margin-top: var(--spacing-sm);">
+                        <label for="member-available-for-scale" style="display: inline-flex; align-items: center; cursor: pointer; font-weight: normal; color: var(--text-color);">
+                            <input type="checkbox" id="member-available-for-scale" checked style="width: auto; margin-right: 8px; margin-bottom: 0;">
+                            Disponível para Escala Automática
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Salvar Membro</button>
+                    <button type="button" class="btn btn-secondary" id="cancel-member-edit" style="display:none;">Cancelar Edição</button>
+                </form>
+
+                <h3 class="section-subtitle">Membros Cadastrados</h3>
+                <div id="members-list" class="registered-list">
+                    <p id="no-members-message" class="info-message">Nenhum membro cadastrado ainda.</p>
+                    </div>
+            </div>
+
+            <div id="config-events" class="sub-section">
+                <h3 class="section-subtitle">Adicionar/Editar Evento</h3>
+                <form id="event-form" class="app-form">
+                    <input type="hidden" id="event-edit-id">
+                    <label for="event-name">Nome do Evento:</label>
+                    <input type="text" id="event-name" required placeholder="Ex: Culto de Celebração, Reunião de Oração">
+
+                    <label for="event-date">Data:</label>
+                    <input type="date" id="event-date" required>
+
+                    <label>Ministérios Envolvidos:</label>
+                    <div id="event-ministries-checkboxes" class="checkbox-group">
+                        <p id="no-ministries-for-events-message" class="info-message">Por favor, cadastre os ministérios primeiro na seção "Gerenciar Ministérios".</p>
+                    </div>
+
+                    <label for="event-notes">Observações (opcional):</label>
+                    <textarea id="event-notes" rows="3" placeholder="Detalhes adicionais sobre o evento..."></textarea>
+
+                    <button type="submit" class="btn btn-primary" id="save-event-btn">Salvar Evento</button>
+                    <button type="button" class="btn btn-secondary" id="cancel-event-edit" style="display:none;">Cancelar Edição</button>
+                </form>
+
+                <h3 class="section-subtitle" style="margin-top: var(--spacing-lg);">Calendário de Eventos</h3>
+                <div class="calendar-container config-events-calendar-container">
+                    <div class="calendar-header">
+                        <button id="prevMonthEvents" class="btn btn-secondary btn-sm">&lt;</button>
+                        <h3 id="currentMonthYearEvents"></h3>
+                        <button id="nextMonthEvents" class="btn btn-secondary btn-sm">&gt;</button>
+                    </div>
+                    <div class="calendar-weekdays">
+                        <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+                    </div>
+                    <div class="calendar-grid" id="config-events-calendar-grid">
+                        </div>
+                </div>
+
+                <h3 class="section-subtitle" style="margin-top: var(--spacing-lg);">Importar Eventos do Calendário (JSON/CSV/XLSX)</h3>
+                <div class="app-form">
+                    <label for="import-calendar-file">Selecione um arquivo de calendário:</label>
+                    <input type="file" id="import-calendar-file" accept=".json,.csv,.xlsx">
+                    <button type="button" class="btn btn-primary" id="import-calendar-btn" style="margin-top: var(--spacing-sm);">Importar Eventos</button>
+                    <p id="import-status-message" class="info-message" style="display: none; margin-top: var(--spacing-sm);"></p>
+                </div>
+
+                <h3 class="section-subtitle" style="margin-top: var(--spacing-lg);">Colar Eventos do Calendário (Texto)</h3>
+                <div class="app-form">
+                    <label for="paste-calendar-text">Cole o texto do calendário aqui (um evento por linha, ex: 01/01/2025 - Nome do Evento):</label>
+                    <textarea id="paste-calendar-text" rows="8" placeholder="Ex:&#10;06/07/2025 - Culto de Celebração - Louvor; Acolhimento&#10;12/07/2025 - Reunião de Líderes - Todos"></textarea>
+                    <button type="button" class="btn btn-primary" id="paste-calendar-btn" style="margin-top: var(--spacing-sm);">Processar Texto Colado</button>
+                    <p id="paste-status-message" class="info-message" style="display: none; margin-top: var(--spacing-sm);"></p>
+                </div>
+
+
+                <h3 class="section-subtitle">Eventos Cadastrados</h3>
+                <div id="registered-events-list" class="registered-list">
+                    <p id="no-registered-events-message" class="info-message">Nenhum evento cadastrado ainda.</p>
+                    </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2025 Igreja Batista Caucaia do Alto. Todos os direitos reservados.</p>
+    </footer>
+
+    <div id="member-swap-modal" class="modal" style="display:none;">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3>Trocar Membro na Escala</h3>
+            <p>Ministério: <strong id="swap-ministry-name"></strong></p>
+            <p>Data: <strong id="swap-event-date"></strong></p>
+            <p>Membros Atuais: <strong id="swap-current-members-display"></strong></p>
+            
+            <label for="swap-new-member">Selecionar NOVO membro para adicionar/substituir:</label>
+            <select id="swap-new-member" class="full-width-select">
+                </select>
+            <p id="swap-modal-message" class="info-message" style="display:none;"></p>
+            <button class="btn btn-primary" id="confirm-swap-btn" style="margin-top: var(--spacing-md);">Confirmar Troca</button>
+            <button class="btn btn-secondary" id="cancel-swap-btn" style="margin-top: var(--spacing-md);">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="https://unpkg.com/xlsx/dist/xlsx.full.min.js"></script> 
+    <script src="js/escala.js"></script> </body>
+</html>

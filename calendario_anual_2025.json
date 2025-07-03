@@ -1,0 +1,236 @@
+[
+  {
+    "name": "Férias Pastor",
+    "date": "2025-07-01",
+    "ministries": ["Todos"],
+    "notes": "Início das férias do Pastor."
+  },
+  {
+    "name": "Ensaio Louvor",
+    "date": "2025-07-10",
+    "ministries": ["Louvor"],
+    "notes": "Ensaio semanal do ministério de Louvor."
+  },
+  {
+    "name": "EBF - Ministério Infantil",
+    "date": "2025-07-18",
+    "ministries": ["Infantil"],
+    "notes": "Evento da Escola Bíblica de Férias."
+  },
+  {
+    "name": "Semana de Oração",
+    "date": "2025-07-22",
+    "ministries": ["Intercessão", "Louvor"],
+    "notes": "Início da semana de oração da igreja."
+  },
+  {
+    "name": "Aniversário da Igreja",
+    "date": "2025-07-26",
+    "ministries": ["Todos", "Louvor", "Acolhimento", "Mídia e Som"],
+    "notes": "Celebração do aniversário da igreja."
+  },
+  {
+    "name": "Aniversário da Igreja (2)",
+    "date": "2025-07-27",
+    "ministries": ["Todos", "Louvor", "Acolhimento", "Mídia e Som"],
+    "notes": "Continuação da celebração do aniversário."
+  },
+  {
+    "name": "Aniversário da Igreja (AGO)",
+    "date": "2025-08-01",
+    "ministries": ["Todos", "Louvor", "Acolhimento"],
+    "notes": "Início da celebração do aniversário da igreja em AGO."
+  },
+  {
+    "name": "Ensaio Louvor",
+    "date": "2025-08-08",
+    "ministries": ["Louvor"],
+    "notes": "Ensaio semanal do ministério de Louvor."
+  },
+  {
+    "name": "Encontro Jovens - 1",
+    "date": "2025-08-09",
+    "ministries": ["Infantil", "Apoio à Comunidade"],
+    "notes": "Primeiro encontro de jovens do mês."
+  },
+  {
+    "name": "Juventude e Evangelismo",
+    "date": "2025-08-09",
+    "ministries": ["Introdução", "Apoio à Comunidade"],
+    "notes": "Evento de evangelismo para a juventude."
+  },
+  {
+    "name": "Assembleia Mensal",
+    "date": "2025-08-10",
+    "ministries": ["Todos"],
+    "notes": "Assembleia mensal de membros."
+  },
+  {
+    "name": "Encontro de Mulheres",
+    "date": "2025-08-16",
+    "ministries": ["Mulheres"],
+    "notes": "Evento especial para mulheres."
+  },
+  {
+    "name": "Ensaio Louvor",
+    "date": "2025-08-22",
+    "ministries": ["Louvor"],
+    "notes": "Ensaio semanal do ministério de Louvor."
+  },
+  {
+    "name": "Passeio Parque",
+    "date": "2025-08-23",
+    "ministries": ["Infantil", "Apoio à Comunidade"],
+    "notes": "Passeio ao parque para a família."
+  },
+  {
+    "name": "Encerramento Jovens",
+    "date": "2025-08-30",
+    "ministries": ["Infantil"],
+    "notes": "Evento de encerramento dos jovens."
+  },
+  {
+    "name": "Culto Evangelístico",
+    "date": "2025-08-31",
+    "ministries": ["Introdução", "Louvor", "Mídia e Som"],
+    "notes": "Culto focado em evangelismo."
+  },
+  {
+    "name": "Ensaio Louvor",
+    "date": "2025-09-05",
+    "ministries": ["Louvor"],
+    "notes": "Ensaio semanal do ministério de Louvor."
+  },
+  {
+    "name": "Encontro Jovens - 1",
+    "date": "2025-09-06",
+    "ministries": ["Infantil"],
+    "notes": "Primeiro encontro de jovens do mês."
+  },
+  {
+    "name": "Missões e Evangelismo",
+    "date": "2025-09-13",
+    "ministries": ["Introdução", "Apoio à Comunidade"],
+    "notes": "Dia de foco em missões e evangelismo."
+  },
+  {
+    "name": "Culto Evangelístico",
+    "date": "2025-09-19",
+    "ministries": ["Introdução", "Louvor"],
+    "notes": "Culto focado em evangelismo."
+  },
+  {
+    "name": "Encontro de Casais",
+    "date": "2025-09-20",
+    "ministries": ["Casais"],
+    "notes": "Evento especial para casais."
+  },
+  {
+    "name": "Ensaio Louvor",
+    "date": "2025-09-26",
+    "ministries": ["Louvor"],
+    "notes": "Ensaio semanal do ministério de Louvor."
+  },
+  {
+    "name": "Culto Juventude",
+    "date": "2025-09-27",
+    "ministries": ["Infantil"],
+    "notes": "Culto dedicado à juventude."
+  },
+  {
+    "name": "Ensaio Louvor",
+    "date": "2025-10-10",
+    "ministries": ["Louvor"],
+    "notes": "Ensaio semanal do ministério de Louvor."
+  },
+  {
+    "name": "Encontro Jovens - 1",
+    "date": "2025-10-11",
+    "ministries": ["Infantil"],
+    "notes": "Primeiro encontro de jovens do mês."
+  },
+  {
+    "name": "Passeio com as Crianças",
+    "date": "2025-10-11",
+    "ministries": ["Infantil", "Apoio à Comunidade"],
+    "notes": "Evento recreativo para as crianças."
+  },
+  {
+    "name": "Encontro de Mulheres",
+    "date": "2025-10-18",
+    "ministries": ["Mulheres"],
+    "notes": "Evento especial para mulheres."
+  },
+  {
+    "name": "Ensaio Louvor",
+    "date": "2025-10-24",
+    "ministries": ["Louvor"],
+    "notes": "Ensaio semanal do ministério de Louvor."
+  },
+  {
+    "name": "Culto Juventude",
+    "date": "2025-10-25",
+    "ministries": ["Infantil"],
+    "notes": "Culto dedicado à juventude."
+  },
+  {
+    "name": "Acampa - Jovens",
+    "date": "2025-11-01",
+    "ministries": ["Infantil", "Homens", "Mulheres", "Apoio à Comunidade"],
+    "notes": "Início do acampamento de jovens."
+  },
+  {
+    "name": "Encontro de Líderes",
+    "date": "2025-11-15",
+    "ministries": ["Todos"],
+    "notes": "Reunião de líderes da igreja."
+  },
+  {
+    "name": "Ensaio Louvor",
+    "date": "2025-11-21",
+    "ministries": ["Louvor"],
+    "notes": "Ensaio semanal do ministério de Louvor."
+  },
+  {
+    "name": "Encontro de Casais",
+    "date": "2025-11-22",
+    "ministries": ["Casais"],
+    "notes": "Evento especial para casais."
+  },
+  {
+    "name": "Culto de Juventude",
+    "date": "2025-11-29",
+    "ministries": ["Infantil"],
+    "notes": "Culto dedicado à juventude."
+  },
+  {
+    "name": "Dia da Família - Pastor",
+    "date": "2025-12-06",
+    "ministries": ["Todos"],
+    "notes": "Dia especial para a família com o pastor."
+  },
+  {
+    "name": "Cantata Musical Infantil",
+    "date": "2025-12-07",
+    "ministries": ["Infantil", "Louvor"],
+    "notes": "Apresentação de cantata musical pelas crianças."
+  },
+  {
+    "name": "Ensaio Louvor",
+    "date": "2025-12-11",
+    "ministries": ["Louvor"],
+    "notes": "Ensaio semanal do ministério de Louvor."
+  },
+  {
+    "name": "Encontro de Jovens",
+    "date": "2025-12-13",
+    "ministries": ["Infantil"],
+    "notes": "Encontro de jovens do mês."
+  },
+  {
+    "name": "Culto de Natal",
+    "date": "2025-12-24",
+    "ministries": ["Louvor", "Acolhimento", "Mídia e Som", "Todos"],
+    "notes": "Culto especial de Natal."
+  }
+]

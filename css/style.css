@@ -1,0 +1,823 @@
+/* Importação de Fonte Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Variáveis CSS para Cores e Espaçamento */
+:root {
+    /* Cores do Logo e da Paleta */
+    --primary-blue: #007bff; /* Azul vibrante */
+    --dark-blue: #0056b3;   /* Azul mais escuro para títulos e destaques */
+    --light-blue: #e0f7fa;  /* Azul muito claro para fundos de cartões */
+
+    /* Cores Neutras */
+    --text-color: #343a40;      /* Cinza escuro para texto principal */
+    --background-color: #f8f9fa; /* Fundo geral claro */
+    --card-background: #ffffff;  /* Fundo de cartões e áreas de conteúdo */
+    --border-color: #e9ecef;     /* Cor de borda suave */
+    --shadow-color: rgba(0, 0, 0, 0.08); /* Sombra leve para profundidade */
+
+    /* Cores de Feedback (para botões de ação) */
+    --success-color: #28a745; /* Verde para sucesso/confirmar */
+    --error-color: #dc3545;  /* Vermelho para erro/excluir */
+    --info-color: #17a2b8;   /* Azul ciano para mensagens de informação */
+    --warning-color: #ffc107; /* Amarelo para avisos */
+
+    /* Espaçamento Padrão */
+    --spacing-xs: 5px;
+    --spacing-sm: 10px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+
+    /* Raio da Borda (arredondamento) */
+    --border-radius: 8px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Fonte moderna importada */
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6; /* Altura da linha para melhor leitura */
+    display: flex; /* Para layout flexível do corpo */
+    flex-direction: column; /* Conteúdo em coluna */
+    min-height: 100vh; /* Ocupa a altura total da viewport */
+}
+
+/* Estilos do Cabeçalho (Header) */
+.app-header {
+    background: linear-gradient(135deg, var(--primary-blue), var(--dark-blue)); /* Gradiente de azul */
+    color: white;
+    padding: var(--spacing-md) 0;
+    text-align: center;
+    box-shadow: 0 4px 10px var(--shadow-color); /* Sombra sutil */
+}
+
+.header-content {
+    max-width: 900px; /* Largura máxima do conteúdo do cabeçalho */
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+.logo {
+    max-width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto var(--spacing-sm) auto;
+    filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.3)); /* Sombra na imagem para destaque */
+}
+
+.app-title {
+    font-size: 2.2em; /* Tamanho do título principal */
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600; /* Mais negrito */
+}
+
+.app-description {
+    font-size: 1.1em;
+    opacity: 0.9; /* Um pouco transparente */
+    margin-bottom: var(--spacing-md);
+}
+
+/* Estilos da Navegação Principal (Nav) */
+.main-nav ul {
+    list-style: none; /* Remove marcadores de lista */
+    padding: 0;
+    margin: var(--spacing-md) 0 0 0;
+    display: flex; /* Itens em linha */
+    justify-content: center; /* Centraliza os itens */
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo translúcido */
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.main-nav ul li a {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-decoration: none; /* Remove sublinhado */
+    color: white;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Transições suaves */
+    border-radius: var(--border-radius);
+}
+
+.main-nav ul li a:hover,
+.main-nav ul li a.active { /* Estilo ao passar o mouse ou item ativo */
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px); /* Efeito de "levantar" */
+}
+
+/* Área Principal de Conteúdo (Main) */
+.app-main {
+    flex-grow: 1; /* Permite que o main ocupe o espaço restante na tela */
+    padding: var(--spacing-lg);
+    max-width: 900px;
+    margin: var(--spacing-lg) auto; /* Centraliza com margem superior/inferior */
+    background-color: var(--card-background);
+    box-shadow: 0 5px 15px var(--shadow-color); /* Sombra mais pronunciada */
+    border-radius: var(--border-radius);
+}
+
+/* Estilos para Seções Principais */
+.app-section {
+    display: none; /* Esconde todas as seções por padrão, JS vai controlar */
+    padding: var(--spacing-md) 0;
+}
+
+.app-section.active-section { /* Classe para a seção ativa */
+    display: block;
+}
+
+.section-title {
+    font-size: 1.8em;
+    color: var(--dark-blue);
+    margin-bottom: var(--spacing-md);
+    border-bottom: 2px solid var(--light-blue); /* Linha divisória */
+    padding-bottom: var(--spacing-xs);
+    font-weight: 600;
+}
+
+.section-subtitle {
+    font-size: 1.4em;
+    color: var(--primary-blue);
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Estilos para Sub-Navegação (dentro de "Configurações") */
+.sub-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-md) 0;
+    display: flex;
+    justify-content: flex-start; /* Alinha os itens à esquerda */
+    border-bottom: 1px solid var(--border-color); /* Linha inferior para a barra */
+    flex-wrap: wrap; /* Permite quebrar linha em telas pequenas */
+}
+
+.sub-nav ul li a {
+    display: block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-bottom: 3px solid transparent; /* Para o indicador de aba ativa */
+}
+
+.sub-nav ul li a:hover {
+    background-color: var(--background-color);
+    color: var(--dark-blue);
+}
+
+.sub-nav ul li a.active {
+    color: var(--primary-blue);
+    border-bottom-color: var(--primary-blue); /* Cor de destaque para aba ativa */
+    background-color: var(--card-background); /* Fundo sutil para aba ativa */
+}
+
+/* Sub-seções dentro de "Configurações" */
+.sub-section {
+    display: none; /* Esconde todas as sub-seções por padrão */
+    padding-top: var(--spacing-md); /* Espaçamento superior */
+}
+
+.sub-section.active-sub-section {
+    display: block; /* Mostra apenas a sub-seção ativa */
+}
+
+
+/* Estilos para Cartões (Dashboard, Histórico, Itens Registrados) */
+.cards-grid {
+    display: grid; /* Layout de grade para os cartões */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Colunas responsivas */
+    gap: var(--spacing-md);
+}
+
+.event-card, .history-card, .registered-item { /* Usado para eventos, histórico, ministérios e membros */
+    background-color: var(--light-blue); /* Cor de fundo para os cartões */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-md);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex; /* Para flexbox interno */
+    flex-direction: column;
+    justify-content: space-between; /* Empurra o rodapé para baixo */
+}
+
+.event-card:hover, .history-card:hover, .registered-item:hover {
+    transform: translateY(-3px); /* Efeito de "levantar" ao passar o mouse */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1); /* Sombra mais forte */
+}
+
+.event-card h3, .history-card h3, .registered-item h3 {
+    color: var(--dark-blue);
+    margin-top: 0;
+    font-size: 1.3em;
+    margin-bottom: var(--spacing-sm);
+}
+
+.event-card p, .history-card p, .registered-item p {
+    font-size: 0.95em;
+    line-height: 1.4;
+    margin-bottom: var(--spacing-xs);
+}
+
+.event-card strong, .history-card strong, .registered-item strong {
+    color: var(--primary-blue);
+}
+
+.info-message {
+    text-align: center;
+    color: var(--info-color);
+    font-style: italic;
+    padding: var(--spacing-md);
+    background-color: rgba(23, 162, 184, 0.1); /* Fundo translúcido para mensagens */
+    border-radius: var(--border-radius);
+    margin-top: var(--spacing-md);
+    grid-column: 1 / -1; /* Faz a mensagem ocupar toda a largura na grade */
+}
+
+/* Estilos para Formulários */
+.app-form {
+    background-color: var(--card-background);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-bottom: var(--spacing-lg);
+}
+
+.app-form label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+    color: var(--dark-blue);
+}
+
+.app-form input[type="text"],
+.app-form input[type="date"],
+.app-form input[type="number"],
+.app-form textarea,
+.app-form select {
+    width: calc(100% - (2 * var(--spacing-sm))); /* Largura total menos padding */
+    padding: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-sizing: border-box; /* Inclui padding e borda na largura */
+    font-family: 'Poppins', sans-serif;
+    font-size: 1em;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.app-form input:focus,
+.app-form textarea:focus,
+.app-form select:focus {
+    border-color: var(--primary-blue);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25); /* Sombra de foco azul */
+    outline: none; /* Remove o contorno padrão do navegador */
+}
+
+/* Estilos para Botões */
+.btn {
+    display: inline-block;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: none;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    margin-right: var(--spacing-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.btn-primary {
+    background-color: var(--primary-blue);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--dark-blue);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-success {
+    background-color: var(--success-color);
+    color: white;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-danger {
+    background-color: var(--error-color);
+    color: white;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-sm { /* Botões menores para ações dentro de listas/cards */
+    padding: 8px 12px;
+    font-size: 0.85em;
+    margin-right: 5px;
+    margin-bottom: 0;
+}
+
+
+/* Grupo de Checkbox e Input de Função para Membros */
+.checkbox-group {
+    display: flex;
+    flex-wrap: wrap; /* Quebra linha se não houver espaço */
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+/* Estilo base para os labels dos checkboxes */
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    background-color: var(--card-background);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    font-weight: normal; /* Sobrescreve o font-weight de label geral */
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: var(--spacing-xs);
+    width: auto; /* Anula o 100% de input para checkboxes */
+    margin-bottom: 0;
+}
+
+/* Estilo para labels de checkboxes marcados (ex: em seleção de ministérios para evento) */
+.checkbox-group label:has(input[type="checkbox"]:checked) {
+    background-color: var(--primary-blue);
+    color: white;
+    border-color: var(--dark-blue);
+}
+
+/* Estilo específico para o grupo de input de função dentro do checkbox group (para cadastro de membros) */
+.checkbox-group .role-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Espaçamento entre checkbox e input de função */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    background-color: var(--card-background);
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+    min-width: 200px; /* Garante que o card não fique muito pequeno */
+}
+
+.checkbox-group .role-input-group label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0; /* Remove padding extra do label base */
+    border: none;
+    background-color: transparent;
+    font-weight: 600; /* Deixa o nome do ministério negrito */
+}
+
+.checkbox-group .role-input-group input[type="text"] {
+    width: calc(100% - 10px); /* Ajusta a largura para o padding interno de 5px */
+    padding: 5px;
+    margin-bottom: 0; /* Remove a margem inferior padrão */
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-sizing: border-box;
+    font-size: 0.9em;
+}
+
+/* Estilo quando o ministério de um membro está selecionado */
+.checkbox-group .role-input-group.checked-ministry {
+    background-color: var(--primary-blue);
+    color: white;
+    border-color: var(--dark-blue);
+}
+.checkbox-group .role-input-group.checked-ministry label {
+    color: white; /* Garante que o texto do label fique branco */
+}
+.checkbox-group .role-input-group.checked-ministry input[type="text"] {
+    background-color: rgba(255, 255, 255, 0.2); /* Fundo translúcido para o input de texto */
+    border-color: rgba(255, 255, 255, 0.4);
+    color: white;
+}
+
+
+/* Estilos para Saída de Escala (Tabela) */
+.scale-output {
+    margin-top: var(--spacing-lg);
+    background-color: var(--card-background);
+    padding: var(--spacing-md);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.scale-output h3 {
+    color: var(--dark-blue);
+    font-size: 1.5em;
+    margin-bottom: var(--spacing-md);
+}
+
+.scale-table {
+    width: 100%;
+    border-collapse: separate; /* Permite border-radius */
+    border-spacing: 0; /* Remove espaço entre células */
+    margin-bottom: var(--spacing-md);
+}
+
+.scale-table th, .scale-table td {
+    padding: var(--spacing-sm);
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.scale-table th {
+    background-color: var(--light-blue);
+    color: var(--dark-blue);
+    font-weight: 600;
+}
+
+/* Arredondar cantos da tabela */
+.scale-table thead tr:first-child th:first-child {
+    border-top-left-radius: var(--border-radius);
+}
+.scale-table thead tr:first-child th:last-child {
+    border-top-right-radius: var(--border-radius);
+}
+/* Note: Arredondamento inferior só se aplica se a tabela não tiver rodapé */
+.scale-table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: var(--border-radius);
+}
+.scale-table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: var(--border-radius);
+}
+
+.scale-table tbody tr:hover {
+    background-color: var(--light-blue); /* Fundo ao passar o mouse */
+}
+
+/* Estilo para células de membro na escala que são clicáveis para troca */
+.scale-table .member-cell-editable {
+    cursor: pointer;
+    position: relative; /* Para o ícone de edição */
+    padding-right: 25px; /* Espaço para o ícone */
+    transition: background-color 0.2s ease;
+}
+
+.scale-table .member-cell-editable:hover {
+    background-color: rgba(0, 123, 255, 0.1); /* Um azul mais claro ao passar o mouse */
+}
+
+.scale-table .member-cell-editable::after {
+    content: '✎'; /* Ícone de lápis ou edição */
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8em;
+    color: var(--primary-blue);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.scale-table .member-cell-editable:hover::after {
+    opacity: 1;
+}
+
+
+/* Opções de Compartilhamento */
+.share-options {
+    text-align: center;
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.share-options h3 {
+    margin-top: 0;
+    color: var(--dark-blue);
+}
+
+/* Listas de Itens Registrados (Histórico, Ministérios, Membros, Eventos) */
+.registered-list { /* Container geral para listas de itens registrados */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.registered-item .item-actions {
+    margin-top: var(--spacing-sm);
+    display: flex;
+    gap: var(--spacing-xs);
+    justify-content: flex-end; /* Alinha botões à direita */
+    align-items: center;
+    padding-top: var(--spacing-sm);
+    border-top: 1px solid rgba(0,0,0,0.05); /* Separador visual */
+}
+
+/* Estilos específicos para a lista de ministérios de um membro */
+.member-ministries-display {
+    font-size: 0.85em;
+    margin-top: 5px;
+    color: #555;
+    padding-left: 15px; /* Recuo para parecer uma lista */
+}
+.member-ministries-display li {
+    list-style-type: disc; /* Marcador de lista */
+    margin-bottom: 3px;
+}
+
+
+/* Rodapé (Footer) */
+.app-footer {
+    text-align: center;
+    padding: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    background-color: var(--dark-blue);
+    color: white;
+    font-size: 0.9em;
+    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsividade Básica (para telas menores) */
+@media (max-width: 768px) {
+    .header-content, .app-main {
+        padding: 0 var(--spacing-sm); /* Menos padding lateral */
+    }
+
+    .main-nav ul, .sub-nav ul {
+        flex-direction: column; /* Links de navegação em coluna */
+        align-items: stretch; /* Estica os itens para preencher a largura */
+    }
+
+    .main-nav ul li a, .sub-nav ul li a {
+        padding: var(--spacing-sm);
+        text-align: center;
+    }
+
+    .app-title {
+        font-size: 1.8em;
+    }
+
+    .app-description {
+        font-size: 1em;
+    }
+
+    .section-title {
+        font-size: 1.5em;
+    }
+
+    .cards-grid, .registered-list {
+        grid-template-columns: 1fr; /* Uma única coluna para cartões em telas pequenas */
+    }
+
+    .btn {
+        width: 100%; /* Botões ocupam largura total */
+        margin-right: 0;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .checkbox-group .role-input-group {
+        min-width: unset; /* Remove min-width em telas pequenas */
+        width: 100%; /* Ocupa a largura total */
+    }
+
+    .calendar-container {
+        width: 100%; /* Ocupa a largura total em mobile */
+    }
+}
+
+
+/* Estilos para o Calendário Customizado */
+.calendar-container {
+    background-color: var(--card-background);
+    border-radius: var(--border-radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+    max-width: 400px; /* Largura máxima para o calendário */
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Calendário na seção de eventos pode ter uma largura diferente, se necessário */
+.config-events-calendar-container {
+    max-width: 100%; /* Permite ocupar mais espaço */
+    margin-bottom: var(--spacing-lg);
+}
+
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--spacing-md);
+    color: var(--dark-blue);
+}
+
+.calendar-header h3 {
+    margin: 0;
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: 600;
+    color: var(--primary-blue);
+    margin-bottom: var(--spacing-sm);
+}
+
+.calendar-weekdays span {
+    padding: var(--spacing-xs);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    text-align: center;
+}
+
+.calendar-day {
+    padding: var(--spacing-sm) 0;
+    border-radius: var(--border-radius);
+    background-color: var(--background-color);
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    font-weight: 500;
+    color: var(--text-color);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 50px; /* Altura mínima para cada dia */
+}
+
+.calendar-day:hover {
+    background-color: var(--light-blue);
+    transform: translateY(-2px);
+}
+
+.calendar-day.inactive {
+    color: #ccc;
+    cursor: not-allowed;
+    background-color: #f0f0f0;
+}
+
+.calendar-day.selected {
+    background-color: var(--primary-blue);
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.3);
+}
+
+.calendar-day.has-event {
+    border: 2px solid var(--success-color); /* Borda verde para dias com evento */
+}
+
+.calendar-day.has-event.selected {
+    border-color: white; /* Borda branca se selecionado e tem evento */
+}
+
+.event-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--success-color);
+    border-radius: 50%;
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Estilos para o Modal (Pop-up de Troca de Membro) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1000; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background-color: var(--card-background);
+    margin: auto;
+    padding: var(--spacing-lg);
+    border-radius: var(--border-radius);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    position: relative;
+    max-width: 500px;
+    width: 90%;
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.close-button:hover,
+.close-button:focus {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h3 {
+    color: var(--dark-blue);
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: var(--spacing-xs);
+}
+
+.modal-content p {
+    margin-bottom: var(--spacing-sm);
+}
+
+.modal-content label {
+    margin-top: var(--spacing-sm);
+    margin-bottom: var(--spacing-xs);
+    font-weight: 600;
+}
+
+.modal-content select.full-width-select {
+    width: 100%;
+    padding: var(--spacing-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    margin-bottom: var(--spacing-md);
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.modal-content .btn {
+    margin-top: var(--spacing-sm);
+}
+
+/* Mensagens de status no modal */
+.modal-content .info-message {
+    background-color: rgba(23, 162, 184, 0.1);
+    color: var(--info-color);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius);
+    margin-top: var(--spacing-sm);
+    text-align: center;
+}
+.modal-content .info-message.error-message {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: var(--error-color);
+}
+.modal-content .info-message.success-message {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: var(--success-color);
+}
